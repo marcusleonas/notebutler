@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/marcusleonas/notebutler/master/logo.png" alt="Notebutler logo" width="200">
+  <img src="https://github.com/marcusleonas/notebutler/blob/main/logo.png?raw=true" alt="Notebutler logo" width="200">
   <strong><a href="https://nb.flvffy.xyz/">Read the docs</a></strong>
 </p>
 
