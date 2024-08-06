@@ -1,3 +1,8 @@
+<p align="center">
+  <img src="https://raw.githubusercontent.com/marcusleonas/notebutler/master/logo.png" alt="Notebutler logo" width="200">
+  <strong><a href="https://nb.flvffy.xyz/">Read the docs</a></strong>
+</p>
+
 # Notebutler
 
 A little cli tool to manage your notes. Written in Golang.
