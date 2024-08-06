@@ -1,6 +1,7 @@
 <p align="center">
   <img src="https://github.com/marcusleonas/notebutler/blob/main/logo.png?raw=true" alt="Notebutler logo" width="200">
-  <strong><a href="https://nb.flvffy.xyz/">Read the docs</a></strong>
+  <br/><br/>
+  <h2><strong><a href="https://nb.flvffy.xyz/">Read the docs</a></strong></h2>
 </p>
 
 # Notebutler
