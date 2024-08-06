@@ -24,12 +24,12 @@ jobs:
 
       - name: build
         run: ./linux-amd64/malta build
-        working-directory: /docs
+        working-directory: ./docs
 
       - name: upload pages artifact
         uses: actions/upload-pages-artifact@v1
         with:
-          path: dist
+          path: ./docs/dist
 
   deploy:
     needs: build
