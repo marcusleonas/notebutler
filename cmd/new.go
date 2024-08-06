@@ -14,6 +14,7 @@ import (
 	stdTemplate "text/template"
 
 	"github.com/charmbracelet/huh"
+	"github.com/marcusleonas/notebutler/lib"
 	"github.com/spf13/cobra"
 )
 
@@ -40,15 +41,7 @@ func new(cmd *cobra.Command, args []string) {
 		template += ".md"
 	}
 
-	if _, err := os.Stat(".notebutler"); os.IsNotExist(err) {
-		fmt.Println("Config directory (.notebutler) not found. Notebutler not initialized. Run `notebutler init` to initialize.")
-		os.Exit(1)
-	}
-
-	if _, err := os.Stat("notebutler.json"); os.IsNotExist(err) {
-		fmt.Println("Config file (notebutler.json) not found. Notebutler not initialized. Run `notebutler init` to initialize.")
-		os.Exit(1)
-	}
+	lib.Check() // Checks if notebutler is initialised
 
 	configBytes, err := os.ReadFile("notebutler.json")
 	if err != nil {
