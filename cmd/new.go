@@ -2,6 +2,7 @@ package cmd
 
 import (
 	"bytes"
+	"encoding/json"
 	"fmt"
 	"log"
 	"os"
@@ -49,6 +50,17 @@ func new(cmd *cobra.Command, args []string) {
 		os.Exit(1)
 	}
 
+	configBytes, err := os.ReadFile("notebutler.json")
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	var config Config
+	err = json.Unmarshal(configBytes, &config)
+	if err != nil {
+		log.Fatal(err)
+	}
+
 	templates, err := os.ReadDir(".notebutler/templates")
 	if err != nil {
 		log.Fatal(err)
@@ -94,13 +106,21 @@ func new(cmd *cobra.Command, args []string) {
 		log.Fatal(err)
 	}
 
-	now := time.Now().Format("2006-01-02 15:04:05")
+	d := time.Now().Format("01/02/2006")
+	t := time.Now().Format("15:04:05")
+	n := time.Now().Format("2006-01-02 15:04:05")
 	data := struct {
 		Name      string
+		Notebook  string
 		CreatedAt string
+		Date      string
+		Time      string
 	}{
 		Name:      name,
-		CreatedAt: now,
+		Notebook:  config.NotebookName,
+		CreatedAt: n,
+		Date:      d,
+		Time:      t,
 	}
 
 	var result bytes.Buffer
