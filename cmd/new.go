@@ -2,6 +2,7 @@ package cmd
 
 import (
 	"bytes"
+	"encoding/json"
 	"fmt"
 	"log"
 	"os"
@@ -13,6 +14,7 @@ import (
 	stdTemplate "text/template"
 
 	"github.com/charmbracelet/huh"
+	"github.com/marcusleonas/notebutler/lib"
 	"github.com/spf13/cobra"
 )
 
@@ -39,14 +41,17 @@ func new(cmd *cobra.Command, args []string) {
 		template += ".md"
 	}
 
-	if _, err := os.Stat(".notebutler"); os.IsNotExist(err) {
-		fmt.Println("Config directory (.notebutler) not found. Notebutler not initialized. Run `notebutler init` to initialize.")
-		os.Exit(1)
+	lib.Check() // Checks if notebutler is initialised
+
+	configBytes, err := os.ReadFile("notebutler.json")
+	if err != nil {
+		log.Fatal(err)
 	}
 
-	if _, err := os.Stat("notebutler.json"); os.IsNotExist(err) {
-		fmt.Println("Config file (notebutler.json) not found. Notebutler not initialized. Run `notebutler init` to initialize.")
-		os.Exit(1)
+	var config Config
+	err = json.Unmarshal(configBytes, &config)
+	if err != nil {
+		log.Fatal(err)
 	}
 
 	templates, err := os.ReadDir(".notebutler/templates")
@@ -94,13 +99,21 @@ func new(cmd *cobra.Command, args []string) {
 		log.Fatal(err)
 	}
 
-	now := time.Now().Format("2006-01-02 15:04:05")
+	d := time.Now().Format("01/02/2006")
+	t := time.Now().Format("15:04:05")
+	n := time.Now().Format("2006-01-02 15:04:05")
 	data := struct {
 		Name      string
+		Notebook  string
 		CreatedAt string
+		Date      string
+		Time      string
 	}{
 		Name:      name,
-		CreatedAt: now,
+		Notebook:  config.NotebookName,
+		CreatedAt: n,
+		Date:      d,
+		Time:      t,
 	}
 
 	var result bytes.Buffer
