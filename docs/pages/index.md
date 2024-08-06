@@ -54,6 +54,17 @@ and outputs it to stdout.
 notebuter read <name>
 ```
 
+## Build your notes to html
+
+To build your notes to a static html site, run:
+
+```sh
+notebutler build
+```
+
+This will create a `html` directory in the current directory, with all your notes
+converted to html. This includes pico css for styling.
+
 ## Issues / Feature Requests
 
 If you have any issues or feature requests, please open an issue on the

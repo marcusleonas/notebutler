@@ -15,7 +15,13 @@ folder will be automatically detected and can be used when creating new notes.
 
 `Name`: The name of the note.
 
+`Notebook`: The name of the notebook the note is in.
+
 `CreatedAt`: The date and time the note was created.
+
+`Date`: The date the note was created.
+
+`Time`: The time the note was created.
 
 ## Example
 
@@ -23,4 +29,6 @@ folder will be automatically detected and can be used when creating new notes.
 # {{ .Name }}
 
 This is a new note created at {{ .CreatedAt }}.
+
+In {{ .Notebook }}
 ```
