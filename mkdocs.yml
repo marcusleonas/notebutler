@@ -1,0 +1,28 @@
+site_name: Notebutler Docs
+site_url: https://marcusleonas.github.io/notebutler
+theme:
+  name: material
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - toc.integrate
+    - search.suggest
+    - search.highlight
+    - content.tabs.link
+    - content.code.annotation
+    - content.code.copy
+  language: en
+  palette:
+    - scheme: default
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+      primary: indigo
+      accent: blue
+    - scheme: slate
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light
+      primary: indigo
+      accent: blue
