@@ -33,3 +33,23 @@ notebutler new
 ```sh
 notebutler read <name>
 ```
+
+## Build
+
+Install [Go](https://golang.org/doc/install).
+
+### For current architecture
+
+```sh
+go build .
+```
+
+### For all architectures
+
+```sh
+./build.sh github.com/marcusleonas/notebutler
+```
+
+## License
+
+Licensed under the MIT License. See [LICENSE](LICENSE) for details.
