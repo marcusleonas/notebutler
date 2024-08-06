@@ -9,10 +9,13 @@ import (
 	"github.com/spf13/cobra"
 )
 
+const VERSION = "0.0.1"
+
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
-	Use:   "notebutler",
-	Short: "Manage your notes in the terminal",
+	Use:     "notebutler",
+	Short:   "Manage your notes in the terminal",
+	Version: VERSION,
 	Long: `Notebutler is a small CLI tool that helps you manage your
 	notes in the terminal. It uses markdown files.
 	
