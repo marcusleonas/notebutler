@@ -10,7 +10,8 @@
       "pages": [
         ["Getting Started", "/"],
         ["Configuration", "/config"],
-        ["Templates", "/templates"]
+        ["Templates", "/templates"],
+        ["Planned Features", "/planned-features"]
       ]
     }
   ],

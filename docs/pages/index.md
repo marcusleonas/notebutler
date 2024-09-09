@@ -16,6 +16,9 @@ curl -L https://github.com/marcusleonas/notebutler/releases/latest/download/<ver
 install notebtler /usr/local/bin
 ```
 
+On windows, you can download the binary from the [releases page](https://github.com/marcusleonas/notebutler/releases)
+and add it to your PATH.
+
 ## Initialise a new notebook
 
 Initialising a new notebook is as simple as running:
@@ -63,7 +66,7 @@ notebutler build
 ```
 
 This will create a `html` directory in the current directory, with all your notes
-converted to html. This includes pico css for styling.
+converted to html. This includes [picocss](https://picocss.com/) for styling.
 
 ## Serve your notes for local development
 
