@@ -8,6 +8,7 @@ import (
 	"log"
 	"os"
 	"path/filepath"
+	"regexp"
 	"strings"
 
 	"github.com/marcusleonas/notebutler/lib"
@@ -109,8 +110,24 @@ func convert(p string, htmlDir string) {
 	}
 }
 
+func removeBetweenCharacters(input string, startChar, endChar string) (string, error) {
+	// Create a regular expression pattern to match the startChar, everything between them, and the endChar
+	pattern := regexp.MustCompile(fmt.Sprintf(`%s[^%s]*%s`, regexp.QuoteMeta(startChar), regexp.QuoteMeta(endChar), regexp.QuoteMeta(endChar)))
+
+	// Replace all matches with an empty string
+	result := pattern.ReplaceAllString(input, "")
+	return result, nil
+}
+
 func convertMarkdownToHTML(mdContent []byte) []byte {
 	var buf strings.Builder
+
+	mdWithoutFrontmatter, err := removeBetweenCharacters(string(mdContent), "---", "---")
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	mdContent = []byte(mdWithoutFrontmatter)
 
 	md := goldmark.New(
 		goldmark.WithRendererOptions(html.WithUnsafe()),
